@@ -49,5 +49,14 @@ fun FormIsian(
     var txtGender by remember {mutableStateOf("")}
     val ListData: MutableList<String> = mutableListOf(txtNama,txtGender,txtAlamat)
 
-
+    Scaffold(
+        modifier = Modifier,
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(id = R.string.home), color = Color.White)},
+                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                    containerColor = colorResource(id = R.color.biru))
+            )
+        }
+    )
 }
