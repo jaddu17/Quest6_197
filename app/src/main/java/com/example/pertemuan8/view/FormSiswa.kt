@@ -58,5 +58,10 @@ fun FormIsian(
                     containerColor = colorResource(id = R.color.biru))
             )
         }
-    )
+    ) { isiRuang ->
+        Column(modifier = Modifier.padding(isiRuang),
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.CenterHorizontally
+        )
+    }
 }
