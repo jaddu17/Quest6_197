@@ -39,4 +39,10 @@ import com.example.pertemuan8.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormIsian(
-)
+    //edit 1 : parameter pilihanJK dan onSubmitButtonClicked
+    pilihanJK: List<String>,
+    onSubmitButtonClicked : (MutableList<String>) -> Unit,
+    modifier: Modifier = Modifier
+) {
+
+}
