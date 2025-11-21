@@ -62,18 +62,71 @@ fun FormIsian(
         Column(modifier = Modifier.padding(isiRuang),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
-        ) {
+        ){
             OutlinedTextField(
                 value = txtNama,
                 singleLine = true,
                 modifier = Modifier
                     .padding(top = 20.dp)
                     .width(250.dp),
-                label = { Text(text = "Nama Lengkap") },
+                label = {Text(text = "Nama Lengkap")},
                 onValueChange = {
                     txtNama = it
                 }
             )
+            HorizontalDivider(modifier = Modifier
+                .padding(all = 20.dp)
+                .width(250.dp),
+                // PERBAIKAN: Ganti 'Thickness' (yang tidak terdefinisi) dengan nilai yang benar
+                thickness = DividerDefaults.Thickness,
+                color = Color.Black)
+            Row{
+                pilihanJK.forEach{
+                        item ->
+                    Row(modifier = Modifier.selectable(
+                        selected = txtGender == item,
+                        onClick = {
+                            txtGender = item
+                        }
+                    ),
+                        verticalAlignment = Alignment.CenterVertically){
+                        RadioButton(
+                            selected = txtGender == item,
+                            onClick = {txtGender = item}
+                        )
+                        Text(text = item)
+                    }
+                }
+            }
+            HorizontalDivider(modifier = Modifier
+                .padding(20.dp)
+                .width(250.dp),
+                thickness = 1.dp, // Baris ini sudah benar
+                color = Color.Black
+            )
+            OutlinedTextField(
+                value = txtAlamat,
+                singleLine = true,
+                shape = MaterialTheme.shapes.medium,
+                modifier = Modifier
+                    .width(250.dp),
+                label = {Text(text = "Alamat")},
+                onValueChange = {
+                    txtAlamat = it
+                },
+            )
+            Spacer(modifier = Modifier.height(30.dp))
+            Button(
+                modifier = Modifier
+                    .fillMaxWidth(1f)
+                    .padding(all = 25.dp),
+                enabled = txtAlamat.isNotEmpty(),
+                onClick = { onSubmitButtonClicked(ListData) },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = colorResource(id = R.color.biru))
+            ) {
+                Text(stringResource(id = R.string.submit))
+            }
         }
     }
 }
